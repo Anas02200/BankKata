@@ -1,6 +1,6 @@
 package org.banking.kata.domain.accounts;
 
-import org.banking.kata.domain.valueobjects.AccountNumber;
+import org.banking.kata.domain.values.AccountNumber;
 
 import java.util.Optional;
 

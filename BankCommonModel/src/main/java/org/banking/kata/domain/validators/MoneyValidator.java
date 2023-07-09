@@ -1,6 +1,6 @@
 package org.banking.kata.domain.validators;
 
-import org.banking.kata.domain.valueobjects.Money;
+import org.banking.kata.domain.values.Money;
 
 public class MoneyValidator extends BaseValidator<Money> {
     public MoneyValidator(Money value) {

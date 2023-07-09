@@ -1,4 +1,4 @@
-package org.banking.kata.domain.valueobjects;
+package org.banking.kata.domain.values;
 
 public record Money(int value) {
 

@@ -1,7 +1,7 @@
 package org.banking.kata.accountservices.viewaccount;
 
 import org.banking.kata.domain.accounts.*;
-import org.banking.kata.domain.valueobjects.*;
+import org.banking.kata.domain.values.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,7 +22,7 @@ class ViewAccountServiceTest {
 
     private ViewAccountService viewAccountService;
     private final String accNumber = UUID.randomUUID().toString();
-    private final int initalDeposit = 1 ;
+    private final Money initalDeposit = Money.ZERO ;
 
     private final String accountHolderFirstN = "Anas B";
     private final String accountHolderLastN = "B";
@@ -31,8 +31,8 @@ class ViewAccountServiceTest {
 
 
         List<AccountEvent> initialAccountEvents = List.of(new AccountEvent(AccountEventType.OPENING,
-                LocalDateTime.now(), TransactionAmount.of(Money.of(initalDeposit)), Balance.of(Money.of(initalDeposit)),
-                Balance.of(Money.of(initalDeposit))));
+                LocalDateTime.now(), TransactionAmount.of(initalDeposit), Balance.of(initalDeposit),
+                Balance.of(initalDeposit)));
 
 
         Account account = new Account(AccountType.CHECKING, AccountNumber.of(accNumber),
@@ -59,11 +59,17 @@ class ViewAccountServiceTest {
         //given view account request
         ViewAccountRequest viewAccountRequest = new ViewAccountRequest(accNumber);
         //when
-        ViewAccountResponse  printedStatement = viewAccountService.execute(viewAccountRequest);
+        ViewAccountResponse  statement = viewAccountService.execute(viewAccountRequest);
 
         //then , no assertions here , just to check printing format
+
+
+        String printedStatement = statement.print();
+
         System.out.println(printedStatement);
 
-        assertEquals(accNumber,printedStatement.getAccountNumber());
+//        System.out.println(statement);
+
+        assertEquals(accNumber,statement.getAccountNumber());
     }
 }

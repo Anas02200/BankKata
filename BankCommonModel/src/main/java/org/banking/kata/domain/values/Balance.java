@@ -1,4 +1,4 @@
-package org.banking.kata.domain.valueobjects;
+package org.banking.kata.domain.values;
 
 
 import org.banking.kata.domain.exceptions.ValidationMessages;
@@ -31,6 +31,6 @@ public record Balance(Money value) {
 
     @Override
     public String toString() {
-        return "Balance{" + "value=" + value + '}';
+        return  " " + value.value();
     }
 }

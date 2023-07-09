@@ -6,8 +6,8 @@ import org.banking.kata.domain.accounts.Account;
 import org.banking.kata.domain.accounts.AccountRepository;
 import org.banking.kata.domain.exceptions.ValidationException;
 import org.banking.kata.domain.exceptions.ValidationMessages;
-import org.banking.kata.domain.valueobjects.AccountNumber;
-import org.banking.kata.domain.valueobjects.TransactionAmount;
+import org.banking.kata.domain.values.AccountNumber;
+import org.banking.kata.domain.values.TransactionAmount;
 
 public class WithdrawFundsService implements AccountVoidService<WithdrawFundsRequest> {
 

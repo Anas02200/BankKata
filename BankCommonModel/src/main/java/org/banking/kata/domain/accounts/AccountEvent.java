@@ -1,7 +1,7 @@
 package org.banking.kata.domain.accounts;
 
-import org.banking.kata.domain.valueobjects.Balance;
-import org.banking.kata.domain.valueobjects.TransactionAmount;
+import org.banking.kata.domain.values.Balance;
+import org.banking.kata.domain.values.TransactionAmount;
 
 import java.time.LocalDateTime;
 
@@ -70,7 +70,7 @@ public class AccountEvent {
 
     @Override
     public String toString() {
-        return "AccountEvent{" + "event=" + event + ", time=" + time + ", amount=" + amount + ", before=" + before +
-                ", after=" + after + '}';
+        return event + " at : " + time + ", transaction amount : " + amount + ", balance before :" + before +
+                ", balance after=" + after ;
     }
 }

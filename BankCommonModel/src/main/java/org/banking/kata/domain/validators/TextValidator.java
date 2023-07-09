@@ -1,6 +1,6 @@
 package org.banking.kata.domain.validators;
 
-import org.banking.kata.domain.valueobjects.Text;
+import org.banking.kata.domain.values.Text;
 
 ;
 

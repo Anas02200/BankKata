@@ -4,6 +4,7 @@ package org.banking.kata.accountservices.viewaccount;
 import org.banking.kata.domain.accounts.AccountEvent;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ViewAccountResponse {
     private String accountNumber;
@@ -54,8 +55,36 @@ public class ViewAccountResponse {
         this.history = history;
     }
 
+
+    public String print(){
+
+        var header = """
+                BANK STATEMENT FOR ACCOUNT NUMBER : %s \n
+                
+                Account Holder : %s  \n
+                
+                Current Balance : %s \n
+                
+                
+                Account History : \n
+                
+                %s
+                
+                
+                """;
+        String events = history.stream().map(event -> event.toString()).collect(Collectors.joining("\n"));
+
+        String bankStatement = header.formatted(accountNumber, fullName, currentBalance,events);
+
+        return bankStatement;
+
+    }
+
     @Override
     public String toString() {
         return "ViewAccountResponse{" + "accountNumber='" + accountNumber + '\'' + ", fullName='" + fullName + '\'' + ", currentBalance=" + currentBalance + ", history=" + history.toString() + '}';
     }
+
+
+
 }

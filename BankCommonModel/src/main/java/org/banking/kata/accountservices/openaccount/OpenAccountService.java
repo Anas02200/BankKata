@@ -3,7 +3,7 @@ package org.banking.kata.accountservices.openaccount;
 
 import org.banking.kata.accountservices.AccountBaseService;
 import org.banking.kata.domain.accounts.*;
-import org.banking.kata.domain.valueobjects.*;
+import org.banking.kata.domain.values.*;
 
 import java.time.LocalDateTime;
 import java.util.List;

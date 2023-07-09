@@ -1,4 +1,4 @@
-package org.banking.kata.domain.valueobjects;
+package org.banking.kata.domain.values;
 
 public record Text(String value) {
     private static final Text SPACE = Text.of(" ");

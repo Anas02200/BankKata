@@ -3,13 +3,10 @@ package org.banking.kata.accountservices.viewaccount;
 
 import org.banking.kata.accountservices.AccountBaseService;
 import org.banking.kata.domain.accounts.Account;
-import org.banking.kata.domain.accounts.AccountEvent;
 import org.banking.kata.domain.accounts.AccountRepository;
 import org.banking.kata.domain.exceptions.ValidationException;
 import org.banking.kata.domain.exceptions.ValidationMessages;
-import org.banking.kata.domain.valueobjects.AccountNumber;
-
-import java.util.List;
+import org.banking.kata.domain.values.AccountNumber;
 
 public class ViewAccountService implements AccountBaseService<ViewAccountRequest, ViewAccountResponse> {
 
@@ -45,4 +42,5 @@ public class ViewAccountService implements AccountBaseService<ViewAccountRequest
         //better if we used a builder
         return new ViewAccountResponse(accountNumber,fullName,balance,statement);
     }
+
 }
