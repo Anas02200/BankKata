@@ -15,19 +15,20 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @ExtendWith(MockitoExtension.class)
 class ViewAccountServiceTest {
 
 
-
     private ViewAccountService viewAccountService;
     private final String accNumber = UUID.randomUUID().toString();
-    private final Money initalDeposit = Money.ZERO ;
+    private final Money initalDeposit = Money.ZERO;
 
     private final String accountHolderFirstN = "Anas B";
     private final String accountHolderLastN = "B";
+
     @BeforeEach
-    void setUp( @Mock AccountRepository repository) {
+    void setUp(@Mock AccountRepository repository) {
 
 
         List<AccountEvent> initialAccountEvents = List.of(new AccountEvent(AccountEventType.OPENING,
@@ -36,7 +37,8 @@ class ViewAccountServiceTest {
 
 
         Account account = new Account(AccountType.CHECKING, AccountNumber.of(accNumber),
-                AccountHolderName.of(accountHolderFirstN, accountHolderLastN), Balance.of(initalDeposit),initialAccountEvents );
+                AccountHolderName.of(accountHolderFirstN, accountHolderLastN), Balance.of(initalDeposit),
+                initialAccountEvents);
 
         account.deposit(TransactionAmount.of(10));
 
@@ -48,18 +50,18 @@ class ViewAccountServiceTest {
         account.deposit(TransactionAmount.of(500));
         Mockito.when(repository.find(AccountNumber.of(accNumber))).thenReturn(Optional.of(account));
 
-        this.viewAccountService= new ViewAccountService(repository);
+        this.viewAccountService = new ViewAccountService(repository);
 
 
     }
 
     @Test
-    void execute_should_print_statement() {
+    void shouldPrintStatement() {
 
         //given view account request
         ViewAccountRequest viewAccountRequest = new ViewAccountRequest(accNumber);
         //when
-        ViewAccountResponse  statement = viewAccountService.execute(viewAccountRequest);
+        ViewAccountResponse statement = viewAccountService.execute(viewAccountRequest);
 
         //then , no assertions here , just to check printing format
 
@@ -68,8 +70,13 @@ class ViewAccountServiceTest {
 
         System.out.println(printedStatement);
 
-//        System.out.println(statement);
+        // checking if the printed statement contains the right informations
+        assertTrue(printedStatement.contains(accNumber));
+        assertTrue(printedStatement.contains(statement.getFullName()));
+        assertTrue(printedStatement.contains(Integer.toString(statement.getCurrentBalance())));
 
-        assertEquals(accNumber,statement.getAccountNumber());
+
+        //assertion to check the response for the right acc number
+        assertEquals(accNumber, statement.getAccountNumber());
     }
 }

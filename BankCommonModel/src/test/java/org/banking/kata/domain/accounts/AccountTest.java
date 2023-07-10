@@ -70,7 +70,7 @@ class AccountTest {
     }
 
     @Test
-    void withdraw_more_than_available() {
+    void withdrawMmoreThanAvailable() {
         //given account with initalDeposit = 100
 
         //when widthraw 200

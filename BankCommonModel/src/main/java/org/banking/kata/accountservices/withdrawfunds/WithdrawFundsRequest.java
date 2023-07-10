@@ -8,6 +8,7 @@ public class WithdrawFundsRequest {
     public WithdrawFundsRequest() {
     }
 
+
     public WithdrawFundsRequest(String accountNumber, int amount) {
         this.accountNumber = accountNumber; this.amount = amount;
     }

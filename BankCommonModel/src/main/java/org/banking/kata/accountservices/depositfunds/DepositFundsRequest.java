@@ -10,6 +10,11 @@ public class DepositFundsRequest {
     public DepositFundsRequest() {
     }
 
+    public DepositFundsRequest(String accountNumber, int amount) {
+        this.accountNumber = accountNumber;
+        this.amount = amount;
+    }
+
     public String getAccountNumber() {
         return accountNumber;
     }
