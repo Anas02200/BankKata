@@ -2,7 +2,10 @@ package org.banking.kata.domain.accounts;
 
 import org.banking.kata.domain.exceptions.ValidationException;
 import org.banking.kata.domain.exceptions.ValidationMessages;
-import org.banking.kata.domain.values.*;
+import org.banking.kata.domain.values.AccountHolderName;
+import org.banking.kata.domain.values.AccountNumber;
+import org.banking.kata.domain.values.Balance;
+import org.banking.kata.domain.values.TransactionAmount;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

@@ -2,6 +2,7 @@ package org.banking.kata.domain.values;
 
 
 import org.banking.kata.domain.exceptions.ValidationMessages;
+
 import static org.banking.kata.domain.validators.Validator.guard;
 
 

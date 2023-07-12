@@ -1,7 +1,5 @@
 package org.banking.kata.accountservices.withdrawfunds;
 
-import org.banking.kata.accountservices.depositfunds.DepositFundsRequest;
-import org.banking.kata.accountservices.depositfunds.DepositFundsService;
 import org.banking.kata.domain.accounts.*;
 import org.banking.kata.domain.exceptions.ValidationException;
 import org.banking.kata.domain.exceptions.ValidationMessages;
@@ -18,7 +16,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
 class WithdrawFundsServiceTest {
@@ -85,9 +84,7 @@ class WithdrawFundsServiceTest {
         WithdrawFundsRequest withdrawFundsRequest = new WithdrawFundsRequest(accNumber, withdraw);
 
 
-        ValidationException thrown = assertThrows(ValidationException.class, () -> {
-            withdrawFundsService.execute(withdrawFundsRequest);
-        });
+        ValidationException thrown = assertThrows(ValidationException.class, () -> withdrawFundsService.execute(withdrawFundsRequest));
         assertEquals(ValidationMessages.INSUFFICIENT_FUNDS, thrown.getMessage());
 
     }

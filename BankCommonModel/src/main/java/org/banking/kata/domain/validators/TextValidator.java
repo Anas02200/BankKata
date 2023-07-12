@@ -2,7 +2,7 @@ package org.banking.kata.domain.validators;
 
 import org.banking.kata.domain.values.Text;
 
-;
+
 
 public class TextValidator extends BaseValidator<Text> {
 

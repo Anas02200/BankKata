@@ -7,13 +7,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class AccountTest {
 
@@ -74,14 +71,11 @@ class AccountTest {
         //given account with initalDeposit = 100
 
         //when widthraw 200
-        int withdraw = 200;
+        var amount =   TransactionAmount.of(200);;
 
-        int initialDeposit = account.getBalance().toInt();
         //when
 
-        ValidationException thrown = assertThrows(ValidationException.class, () -> {
-            account.withdraw(TransactionAmount.of(withdraw));
-        });
+        ValidationException thrown = assertThrows(ValidationException.class, () -> account.withdraw(amount));
         assertEquals(ValidationMessages.INSUFFICIENT_FUNDS, thrown.getMessage());
     }
 

@@ -3,6 +3,14 @@ package org.banking.kata.domain.exceptions;
 
 public class ValidationMessages {
 
+
+
+
+    //private constructor since it shouldnt be instanciated
+    private ValidationMessages() {
+    }
+
+
     public static final String FIRST_NAME_EMPTY = "First name is empty";
     public static final String LAST_NAME_EMPTY = "Last name is empty";
     public static final String BALANCE_NEGATIVE = "Balance is negative";
